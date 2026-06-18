@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block title %}Politique de confidentialité - {{ site_name }}{% endblock %}
+{% block body %}
+<main>
+    <section>
+        <img src="{{ asset('img/rgpd.png') }}" alt="Bannière" class="img-fluid w-100 lg-100 hero-img" style="padding:30px; background-color:#0F172A;">
+    </section>
+    <div class="text-center" style="color:#CBD5E1;">
+        <p>Nous collectons les données suivantes : email, pseudo.</p>
+        <p>Ces données sont utilisées uniquement pour l'authentification et la gestion des comptes.</p>
+        <p>Vos données ne sont jamais revendues.</p>
+        <p>Vous pouvez demander la suppression de votre compte à tout moment.</p>
+    </div>
+</main>
+{% endblock %}

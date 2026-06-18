@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard Admin - {{ site_name }}{% endblock %}
+{% block navbar %}{% include 'admin/_navbar.html.twig' %}{% endblock %}
+{% block footer %}{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    <h1 class="text-center mb-5">Tableau de bord administrateur</h1>
+
+    <div class="row g-4 mb-5">
+        {% set stats = {
+            'Articles': totalArticles,
+            'Catégories': totalCategories,
+            'Membres': totalMembres,
+            'Commentaires': totalCommentaires,
+            'En attente': totalCommentairesAttente
+        } %}
+        {% for label, value in stats %}
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="card text-center h-100 shadow" style="background-color:#1E293B; color:#F8FAFC;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ label }}</h5>
+                        <p class="display-6">{{ value }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="row g-4">
+        {% set links = {
+            'Articles': path('app_admin_articles'),
+            'Catégories': path('app_admin_categories'),
+            'Membres': path('app_admin_members'),
+            'Commentaires': path('app_admin_comments')
+        } %}
+        {% for label, url in links %}
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100 shadow" style="background-color:#1E293B; color:#F8FAFC;">
+                    <div class="card-body text-center">
+                        <h4 class="card-title mb-3">{{ label }}</h4>
+                        <a href="{{ url }}" class="btn btn-primary">Gérer</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

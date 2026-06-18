@@ -1,0 +1,21 @@
+parameters:
+    app.mail_from: '%env(MAIL_FROM)%'
+    app.mail_contact: '%env(MAIL_CONTACT)%'
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        bind:
+            string $mailFrom: '%app.mail_from%'
+            string $mailContact: '%app.mail_contact%'
+
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+
+  
+    Twig\Extra\String\StringExtension: ~

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des catégories - {{ site_name }}{% endblock %}
+{% block navbar %}{% include 'admin/_navbar.html.twig' %}{% endblock %}
+{% block footer %}{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    <h1 class="text-center mb-4" style="color:#F8FAFC;">Gestion de catégorie</h1>
+
+    <table class="table table-bordered table-striped table-hover text-center align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for categorie in categories %}
+                <tr>
+                    <td>{{ categorie.id }}</td>
+                    <td>{{ categorie.nom }}</td>
+                    <td>
+                        <a href="{{ path('app_admin_category_edit', {id: categorie.id}) }}" class="btn btn-warning btn-sm" style="border-radius:999px; padding:8px 20px;">Modifier 🖋️</a>
+
+                        <form method="post" action="{{ path('app_admin_category_delete', {id: categorie.id}) }}" class="d-inline"
+                              onsubmit="return confirm('Voulez-vous vraiment supprimer cette catégorie ?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete_categorie_' ~ categorie.id) }}">
+                            <button type="submit" class="btn btn-danger btn-sm" style="border-radius:999px; padding:8px 20px;">Supprimer 🗑️</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="text-center mt-4">
+        <a href="{{ path('app_admin_category_create') }}" class="btn btn-primary" style="background-color:#6366F1; border-radius:999px; padding:10px 34px;">Ajouter ➕</a>
+    </div>
+</div>
+{% endblock %}

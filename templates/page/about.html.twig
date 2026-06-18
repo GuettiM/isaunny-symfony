@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block title %}À propos - {{ site_name }}{% endblock %}
+{% block body %}
+<main>
+    <section>
+        <img src="{{ asset('img/a-propos.png') }}" alt="Bannière" class="img-fluid w-100 lg-100 hero-img" style="padding:30px; background-color:#0F172A;">
+    </section>
+    <p class="text-center" style="color:#CBD5E1;">
+        Ce site est un blog dédié à l'intelligence artificielle.
+        Il a été développé dans le cadre d'un projet de formation.
+    </p>
+</main>
+{% endblock %}

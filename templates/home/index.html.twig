@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - {{ site_name }}{% endblock %}
+
+{% block body %}
+<main>
+    <section>
+        <img src="{{ asset('img/accueil.png') }}" alt="Bannière" class="img-fluid w-100 lg-100 hero-img" style="padding:10px; background-color:#0F172A;">
+    </section>
+
+    {% if featuredArticle %}
+    <section class="featured-article py-5">
+        <div class="container">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-5">
+                    <div class="featured-image-wrapper">
+                        <a href="{{ path('app_article_show', {id: featuredArticle.id}) }}">
+                            <img src="{{ asset('img/' ~ featuredArticle.image) }}" alt="{{ featuredArticle.titre }}" class="img-fluid featured-image">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <h1 class="featured-title" style="color:#F8FAFC;">{{ featuredArticle.titre }}</h1>
+                    <p class="featured-text">{{ featuredArticle.description|slice(0, 255) }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    <section class="categories-section pb-3">
+        <div class="container">
+            <div class="category-title-box"><h2 class="m-0">Catégorie</h2></div>
+            <div class="d-flex flex-wrap gap-2 mt-3">
+                {% for categorie in categories %}
+                    <a href="{{ path('app_categorie_show', {id: categorie.id}) }}" class="btn category-btn" style="background-color:#6366F1;">{{ categorie.nom }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="articles-section py-4">
+        <div class="container">
+            <div class="row g-4">
+                {% for article in articles %}
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="card article-card h-100">
+                            <a href="{{ path('app_article_show', {id: article.id}) }}">
+                                <img src="{{ asset('img/' ~ article.image) }}" class="card-img-top" alt="{{ article.titre }}">
+                            </a>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ article.titre }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

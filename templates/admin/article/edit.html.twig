@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un article - {{ site_name }}{% endblock %}
+{% block navbar %}{% include 'admin/_navbar.html.twig' %}{% endblock %}
+{% block footer %}{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    <h1 class="text-center mb-4" style="color:#F8FAFC;">Modifier un article</h1>
+
+    {{ form_start(form, {attr: {class: 'w-50 mx-auto'}}) }}
+        <div class="mb-3">{{ form_label(form.titre) }} {{ form_widget(form.titre) }} {{ form_errors(form.titre) }}</div>
+        <div class="mb-3">{{ form_label(form.image) }} {{ form_widget(form.image) }} {{ form_errors(form.image) }}</div>
+        <div class="mb-3">{{ form_label(form.description) }} {{ form_widget(form.description) }} {{ form_errors(form.description) }}</div>
+        <div class="mb-3">{{ form_label(form.date) }} {{ form_widget(form.date) }} {{ form_errors(form.date) }}</div>
+        <div class="mb-3">{{ form_label(form.categorie) }} {{ form_widget(form.categorie) }} {{ form_errors(form.categorie) }}</div>
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary" style="background-color:#6366F1; border-radius:999px; padding:10px 34px;">Modifier 🖋️</button>
+        </div>
+    {{ form_end(form) }}
+</div>
+{% endblock %}

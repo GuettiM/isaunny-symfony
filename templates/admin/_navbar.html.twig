@@ -1,0 +1,15 @@
+<nav class="navbar navbar-expand-lg" style="background-color:#6366F1;">
+    <div class="container">
+        <a class="navbar-brand text-white fw-bold" href="{{ path('app_admin_dashboard') }}">Dashboard</a>
+        <div class="d-flex align-items-center flex-wrap gap-2">
+            <span class="text-white me-3">{{ app.user.pseudo }}</span>
+            <a href="{{ path('app_admin_dashboard') }}" class="btn btn-light btn-sm fw-bold px-3 login-btn">Accueil admin</a>
+            <a href="{{ path('app_admin_articles') }}" class="btn btn-light btn-sm fw-bold px-3 login-btn">Articles</a>
+            <a href="{{ path('app_admin_categories') }}" class="btn btn-light btn-sm fw-bold px-3 login-btn">Catégories</a>
+            <a href="{{ path('app_admin_members') }}" class="btn btn-light btn-sm fw-bold px-3 login-btn">Membres</a>
+            <a href="{{ path('app_admin_comments') }}" class="btn btn-light btn-sm fw-bold px-3 login-btn">Commentaires</a>
+            <a href="{{ path('app_home') }}" class="btn btn-warning btn-sm fw-bold px-3 login-btn">Blog</a>
+            <a href="{{ path('app_logout') }}" class="btn btn-danger btn-sm fw-bold px-3 logout-btn">Déconnexion</a>
+        </div>
+    </div>
+</nav>

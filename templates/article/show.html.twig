@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ article.titre }} - {{ site_name }}{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    <h1 class="text-center mb-4" style="color:#F8FAFC;">{{ article.titre }}</h1>
+
+    <div class="text-center mb-4">
+        <img src="{{ asset('img/' ~ article.image) }}" class="img-fluid" style="max-height:400px;" alt="{{ article.titre }}">
+    </div>
+
+    <p class="text-center" style="color:#CBD5E1;">
+        Catégorie : {{ article.categorie ? article.categorie.nom : '' }} |
+        Date : {{ article.date ? article.date|date('d/m/Y') : '' }}
+    </p>
+
+    <div class="mt-4" style="color:#F8FAFC;">
+        {{ article.description|nl2br }}
+    </div>
+</div>
+
+<div class="container my-5">
+    <h3 class="mb-4" style="color:#F8FAFC;">Commentaires</h3>
+
+    {% if comments|length > 0 %}
+        {% for comment in comments %}
+            <div class="p-3 mb-3 rounded" style="background-color:rgba(255,255,255,0.05); color:#F8FAFC;">
+                <p class="mb-1 fw-bold">{{ comment.membre ? comment.membre.pseudo : '' }}</p>
+                <p class="mb-2" style="font-size:0.9rem; color:#CBD5E1;">
+                    {{ comment.dateCommentaire ? comment.dateCommentaire|date('d/m/Y H:i') : '' }}
+                </p>
+                <p class="mb-0">{{ comment.contenu|nl2br }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p style="color:#CBD5E1;">Aucun commentaire validé pour le moment.</p>
+    {% endif %}
+</div>
+
+<div class="container my-5">
+    <h3 class="mb-4" style="color:#F8FAFC;">Laisser un commentaire</h3>
+
+    {% if app.user %}
+        {{ form_start(form) }}
+            <div class="mb-3">
+                {{ form_widget(form.contenu) }}
+                {{ form_errors(form.contenu) }}
+            </div>
+            <button type="submit" class="btn btn-primary" style="background-color:#6366F1; border-radius:999px; padding:10px 34px;">Envoyer</button>
+        {{ form_end(form) }}
+    {% else %}
+        <p style="color:#CBD5E1;">Vous devez être connecté pour laisser un commentaire.</p>
+        <a href="{{ path('app_login') }}" class="btn btn-light">Se connecter</a>
+    {% endif %}
+</div>
+{% endblock %}

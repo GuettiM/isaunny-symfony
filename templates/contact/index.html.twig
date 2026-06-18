@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact - {{ site_name }}{% endblock %}
+
+{% block body %}
+<main>
+    <section>
+        <img src="{{ asset('img/contact.png') }}" alt="Bannière" class="img-fluid w-100 lg-100 hero-img" style="padding:30px; background-color:#0F172A;">
+    </section>
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                {{ form_start(form) }}
+                    <div class="mb-3">
+                        {{ form_label(form.nom) }}
+                        {{ form_widget(form.nom) }}
+                        {{ form_errors(form.nom) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_label(form.email) }}
+                        {{ form_widget(form.email) }}
+                        {{ form_errors(form.email) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_label(form.message) }}
+                        {{ form_widget(form.message) }}
+                        {{ form_errors(form.message) }}
+                    </div>
+                    <button class="btn btn-primary w-100" style="background-color:#6366F1;">Envoyer</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

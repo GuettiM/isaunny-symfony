@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="gMetal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.22" stop-color="#d9d9d9"/>
+      <stop offset="0.5" stop-color="#8f8f8f"/>
+      <stop offset="0.78" stop-color="#2b2b2b"/>
+      <stop offset="1" stop-color="#000000"/>
+    </linearGradient>
+
+    <linearGradient id="gChrome" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#0a0a0a"/>
+      <stop offset="0.25" stop-color="#5a5a5a"/>
+      <stop offset="0.5" stop-color="#f2f2f2"/>
+      <stop offset="0.75" stop-color="#6b6b6b"/>
+      <stop offset="1" stop-color="#0a0a0a"/>
+    </linearGradient>
+
+    <linearGradient id="gPanel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f8f8f8"/>
+      <stop offset="0.55" stop-color="#9a9a9a"/>
+      <stop offset="1" stop-color="#1a1a1a"/>
+    </linearGradient>
+
+    <filter id="fShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feOffset dx="0" dy="14" result="off"/>
+      <feGaussianBlur in="off" stdDeviation="14" result="blur"/>
+      <feColorMatrix in="blur" type="matrix"
+        values="0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 .45 0" result="shadow"/>
+      <feMerge>
+        <feMergeNode in="shadow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="fEmboss" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur"/>
+      <feSpecularLighting in="blur" surfaceScale="4" specularConstant="0.7" specularExponent="18"
+                          lighting-color="#ffffff" result="spec">
+        <feDistantLight azimuth="315" elevation="45"/>
+      </feSpecularLighting>
+      <feComposite in="spec" in2="SourceAlpha" operator="in" result="specIn"/>
+      <feMerge>
+        <feMergeNode in="specIn"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="fInnerShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feOffset dx="0" dy="2"/>
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feComposite in="blur" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="inner"/>
+      <feColorMatrix in="inner" type="matrix"
+        values="0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 .65 0" />
+      <feComposite in2="SourceGraphic" operator="over"/>
+    </filter>
+
+    <linearGradient id="gStroke" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.75"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.55"/>
+    </linearGradient>
+  </defs>
+
+  <g filter="url(#fShadow)">
+
+    <g filter="url(#fEmboss)">
+      <circle cx="512" cy="420" r="235" fill="url(#gMetal)"/>
+      <circle cx="512" cy="420" r="235" fill="none" stroke="url(#gStroke)" stroke-width="10"/>
+    </g>
+
+    <g filter="url(#fEmboss)">
+      <ellipse cx="292" cy="430" rx="70" ry="105" fill="url(#gChrome)"/>
+      <ellipse cx="732" cy="430" rx="70" ry="105" fill="url(#gChrome)"/>
+      <ellipse cx="292" cy="430" rx="46" ry="78" fill="#0f0f0f" opacity="0.65"/>
+      <ellipse cx="732" cy="430" rx="46" ry="78" fill="#0f0f0f" opacity="0.65"/>
+    </g>
+
+    <g filter="url(#fEmboss)">
+      <path d="M365,410
+               C365,345 420,300 512,300
+               C604,300 659,345 659,410
+               C659,500 604,540 512,540
+               C420,540 365,500 365,410Z"
+            fill="url(#gPanel)" stroke="url(#gStroke)" stroke-width="6"/>
+    </g>
+
+    <g filter="url(#fInnerShadow)">
+      <path d="M350,410
+               C350,360 410,330 512,330
+               C614,330 674,360 674,410
+               C674,460 614,495 512,495
+               C410,495 350,460 350,410Z"
+            fill="#0a0a0a"/>
+    </g>
+
+    <g filter="url(#fEmboss)">
+      <ellipse cx="445" cy="410" rx="46" ry="34" fill="#f3f3f3"/>
+      <ellipse cx="579" cy="410" rx="46" ry="34" fill="#f3f3f3"/>
+      <ellipse cx="445" cy="410" rx="22" ry="16" fill="#0a0a0a" opacity="0.35"/>
+      <ellipse cx="579" cy="410" rx="22" ry="16" fill="#0a0a0a" opacity="0.35"/>
+    </g>
+
+    <g filter="url(#fEmboss)">
+      <rect x="472" y="515" width="80" height="14" rx="7" fill="#111111" opacity="0.75"/>
+    </g>
+
+    <g opacity="0.9" filter="url(#fEmboss)">
+      <rect x="600" y="470" width="18" height="10" rx="5" fill="#0c0c0c"/>
+      <rect x="624" y="482" width="22" height="10" rx="5" fill="#0c0c0c"/>
+      <rect x="598" y="494" width="26" height="10" rx="5" fill="#0c0c0c"/>
+    </g>
+
+    <g filter="url(#fEmboss)">
+      <path d="M250,690
+               C250,650 282,618 322,618
+               H702
+               C742,618 774,650 774,690
+               V740
+               C774,780 742,812 702,812
+               H322
+               C282,812 250,780 250,740Z"
+            fill="#0b0b0b" stroke="url(#gStroke)" stroke-width="6"/>
+    </g>
+
+    <g filter="url(#fEmboss)">
+      <text x="512" y="750"
+            text-anchor="middle"
+            font-family="Space Grotesk, Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif"
+            font-size="86"
+            font-weight="700"
+            letter-spacing="2"
+            fill="#f5f5f5">I.sAunny</text>
+    </g>
+
+  </g>
+</svg>

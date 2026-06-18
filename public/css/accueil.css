@@ -1,0 +1,136 @@
+:root {
+  --bg-main: #0F172A;
+  --bg-card: #111827;
+  --primary: #6366F1;
+  --text-main: #F8FAFC;
+  --text-soft: #CBD5E1;
+}
+
+/* ----------------------- PAGE ACCUEIL ---------------------- */
+body {
+  margin: 0;
+  background-color: #0F172A;
+  color: var(--text-main);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/********* header *********/
+.site-header { background-color: var(--bg-main); }
+
+.logo-img {
+  width: 180px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.custom-navbar { background-color: var(--primary); }
+.custom-navbar .nav-link { transition: 0.3s ease; }
+.custom-navbar .nav-link:hover { opacity: 0.8; }
+
+.login-btn { color: var(--primary); border-radius: 999px; }
+.logout-btn { color: var(--primary); border-radius: 999px; }
+
+/* ****************MAIN************ */
+.hero-banner { width: 100%; overflow: hidden; }
+.hero-img { max-height: 220px; object-fit: cover; }
+
+.featured-article { background-color: var(--bg-main); }
+.featured-image-wrapper { background-color: #0b1220; padding: 8px; }
+.featured-image { width: 100%; display: block; object-fit: cover; }
+
+.featured-title {
+  color: var(--text-main);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.featured-text { color: var(--text-soft); line-height: 1.8; font-size: 1rem; }
+
+.category-title-box {
+  display: inline-block;
+  background-color: var(--primary);
+  padding: 8px 18px;
+  border-radius: 2px;
+}
+
+.category-title-box h2 { font-size: 1rem; font-weight: 700; color: white; }
+
+.category-btn {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 999px;
+  padding: 6px 18px;
+  font-size: 0.9rem;
+}
+.category-btn:hover { background-color: #7c7ff5; color: white; }
+
+.article-card {
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  overflow: hidden;
+}
+.article-card img { height: 220px; object-fit: cover; }
+.article-card .card-body { background-color: transparent; padding: 10px 0 0; }
+.article-card .card-title { color: white; font-size: 0.95rem; margin: 0; }
+
+.more-btn {
+  background-color: var(--primary);
+  color: white;
+  border-radius: 999px;
+  padding: 10px 34px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.more-btn:hover { background-color: #7c7ff5; color: white; }
+
+/* *********FOOTER******* */
+.site-footer { background-color: var(--primary); padding: 60px 20px 35px; }
+.footer-title { font-size: 1.2rem; letter-spacing: 1px; color: white; }
+.footer-social { font-size: 0.9rem; color: white; text-align: right; }
+
+/* ***********Responsive******** */
+@media (max-width: 991px) {
+  .featured-title { font-size: 1.6rem; }
+  .hero-img { max-height: 200px; }
+  .footer-social { text-align: center; margin-top: 10px; }
+}
+@media (max-width: 576px) {
+  .featured-title { font-size: 1.35rem; }
+  .featured-text { font-size: 0.95rem; }
+  .article-card img { height: 190px; }
+}
+
+/* =========================================================
+   Pages AUTH (connexion / inscription) — non couvertes par
+   le CSS d'origine, reprennent la charte du site.
+   ========================================================= */
+.login-wrapper, .register-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-main);
+  padding: 20px;
+}
+.login-card, .register-card {
+  background-color: var(--primary);
+  color: var(--text-main);
+  border-radius: 16px;
+  padding: 40px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.4);
+}
+.login-title, .register-title { text-align: center; margin-bottom: 24px; }
+.btn-login, .btn-register {
+  background-color: var(--bg-card);
+  color: var(--text-main);
+  border-radius: 999px;
+  padding: 10px 40px;
+  font-weight: bold;
+}
+.login-link, .register-link { color: var(--text-main); text-decoration: underline; }

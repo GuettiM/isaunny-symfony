@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des commentaires - {{ site_name }}{% endblock %}
+{% block navbar %}{% include 'admin/_navbar.html.twig' %}{% endblock %}
+{% block footer %}{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    <h1 class="text-center mb-4" style="color:#F8FAFC;">Gestion des commentaires</h1>
+
+    <table class="table table-bordered table-striped table-hover text-center align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Auteur</th>
+                <th>Article</th>
+                <th>Contenu</th>
+                <th>Date</th>
+                <th>Statut</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for commentaire in commentaires %}
+                <tr>
+                    <td>{{ commentaire.id }}</td>
+                    <td>{{ commentaire.membre ? commentaire.membre.pseudo : '' }}</td>
+                    <td>{{ commentaire.article ? commentaire.article.titre : '' }}</td>
+                    <td>{{ commentaire.contenu }}</td>
+                    <td>{{ commentaire.dateCommentaire ? commentaire.dateCommentaire|date('d/m/Y H:i') : '' }}</td>
+                    <td>{{ commentaire.statut }}</td>
+                    <td>
+                        {% if not commentaire.valide %}
+                            <form method="post" action="{{ path('app_admin_comment_validate', {id: commentaire.id}) }}" class="d-inline">
+                                <input type="hidden" name="_token" value="{{ csrf_token('validate_commentaire_' ~ commentaire.id) }}">
+                                <button type="submit" class="btn btn-success btn-sm">Valider</button>
+                            </form>
+                        {% endif %}
+
+                        <form method="post" action="{{ path('app_admin_comment_delete', {id: commentaire.id}) }}" class="d-inline"
+                              onsubmit="return confirm('Voulez-vous vraiment supprimer ce commentaire ?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete_commentaire_' ~ commentaire.id) }}">
+                            <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+<header class="site-header py-1">
+    <div class="container text-center">
+        <a href="{{ path('app_home') }}" class="logo-link">
+            <img src="{{ asset('img/logo.png') }}" alt="Logo I.sAunny" class="logo-img" style="width:200px; height:150px;">
+        </a>
+    </div>
+</header>
+
+<nav class="navbar navbar-expand-lg sticky-top custom-navbar" style="background-color:#6366F1;">
+    <div class="container">
+        <a class="navbar-brand text-white fw-bold d-lg-none" href="{{ path('app_home') }}">I.sAunny</a>
+
+        <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarAccueil">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarAccueil">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-4 text-center">
+                <li class="nav-item"><a class="nav-link text-white fw-semibold {{ app.request.attributes.get('_route') == 'app_home' ? 'active' }}" href="{{ path('app_home') }}">Accueil</a></li>
+                <li class="nav-item"><a class="nav-link text-white fw-semibold {{ app.request.attributes.get('_route') == 'app_articles' ? 'active' }}" href="{{ path('app_articles') }}">Article</a></li>
+                <li class="nav-item"><a class="nav-link text-white fw-semibold {{ app.request.attributes.get('_route') == 'app_categories' ? 'active' }}" href="{{ path('app_categories') }}">Catégorie</a></li>
+                <li class="nav-item"><a class="nav-link text-white fw-semibold {{ app.request.attributes.get('_route') == 'app_about' ? 'active' }}" href="{{ path('app_about') }}">À propos</a></li>
+                <li class="nav-item"><a class="nav-link text-white fw-semibold {{ app.request.attributes.get('_route') == 'app_contact' ? 'active' }}" href="{{ path('app_contact') }}">Contact</a></li>
+            </ul>
+
+            <div class="text-center">
+                {% if app.user %}
+                    <span class="text-white fw-bold me-3">{{ app.user.pseudo }}</span>
+
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('app_admin_dashboard') }}" class="btn btn-light sm-2 fw-bold px-2 me-2 login-btn">Admin</a>
+                        <a href="{{ path('app_account') }}" class="btn btn-warning sm-2 fw-bold px-2 me-2 login-btn">Membre</a>
+                    {% else %}
+                        <a href="{{ path('app_account') }}" class="btn btn-light sm-2 fw-bold px-2 me-2 login-btn">Membre</a>
+                    {% endif %}
+
+                    <a href="{{ path('app_logout') }}" class="btn btn-danger sm-2 fw-bold px-2 logout-btn">Déconnexion</a>
+                {% else %}
+                    <a href="{{ path('app_login') }}" class="btn btn-light sm-2 fw-bold px-2 login-btn me-2">Connexion</a>
+                    <a href="{{ path('app_register') }}" class="btn btn-outline-light sm-2 fw-bold px-2 register-btn">Inscription</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>

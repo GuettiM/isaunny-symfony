@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des membres - {{ site_name }}{% endblock %}
+{% block navbar %}{% include 'admin/_navbar.html.twig' %}{% endblock %}
+{% block footer %}{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    <h1 class="text-center mb-4" style="color:#F8FAFC;">Gestion des membres</h1>
+
+    <table class="table table-bordered table-striped table-hover text-center align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Rôle</th>
+                <th>Pseudo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for membre in membres %}
+                <tr>
+                    <td>{{ membre.id }}</td>
+                    <td>{{ membre.email }}</td>
+                    <td>{{ membre.role }}</td>
+                    <td>{{ membre.pseudo }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

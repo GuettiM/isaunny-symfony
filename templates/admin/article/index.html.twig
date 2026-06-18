@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des articles - {{ site_name }}{% endblock %}
+{% block navbar %}{% include 'admin/_navbar.html.twig' %}{% endblock %}
+{% block footer %}{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    <div class="d-flex justify-content-center align-items-center mb-4">
+        <h1 class="m-0" style="color:#F8FAFC;">Gestion des articles</h1>
+    </div>
+
+    <table class="table table-bordered table-striped table-hover text-center align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Titre</th>
+                <th>Image</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Catégorie</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for article in articles %}
+                <tr>
+                    <td>{{ article.id }}</td>
+                    <td>{{ article.titre }}</td>
+                    <td>{{ article.image }}</td>
+                    <td>{{ article.description|u.truncate(60, '...') }}</td>
+                    <td>{{ article.date ? article.date|date('d/m/Y') : '' }}</td>
+                    <td>{{ article.categorie ? article.categorie.nom : '' }}</td>
+                    <td>
+                        <a href="{{ path('app_admin_article_edit', {id: article.id}) }}" class="btn btn-warning btn-sm">Modifier</a>
+
+                        <form method="post" action="{{ path('app_admin_article_delete', {id: article.id}) }}" class="d-inline"
+                              onsubmit="return confirm('Voulez-vous vraiment supprimer cet article ?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete_article_' ~ article.id) }}">
+                            <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="text-center mt-4">
+        <a href="{{ path('app_admin_article_create') }}" class="btn btn-primary" style="background-color:#6366F1; border-radius:999px; padding:10px 34px;">Ajouter ➕</a>
+    </div>
+</div>
+{% endblock %}
